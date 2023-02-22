@@ -1,0 +1,34 @@
+{
+  "name": "my-wallet-node",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "cross-env NODE_ENV=production node ./server.js",
+    "start:dev": "cross-env NODE_ENV=development nodemon ./server.js",
+    "lint": "eslint **/*.js",
+    "lint:fix": "eslint --fix **/*.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DmitriyGovosyants/my-wallet-node.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DmitriyGovosyants/my-wallet-node/issues"
+  },
+  "homepage": "https://github.com/DmitriyGovosyants/my-wallet-node#readme",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "cross-env": "^7.0.3",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "joi": "^17.8.1",
+    "jsonwebtoken": "^9.0.0",
+    "mongoose": "^6.9.2",
+    "morgan": "^1.10.0",
+    "nodemon": "^2.0.20"
+  }
+}
