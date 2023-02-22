@@ -15,7 +15,11 @@ const registerController = async (req, res) => {
   res.status(201).json({
     code: 201,
     status: 'success',
-    data: { token: token },
+    data: {
+      token: token,
+      email: req.body.email,
+      name: req.body.name
+    },
 
     message: 'Registration success',
   });
@@ -73,6 +77,10 @@ const currentController = async (req, res) => {
   }
   res.json({
     code: 200,
+    data: {
+      email: req.user.email,
+      name: req.user.name,
+    },
     message: 'User confirmed',
   });
 };
