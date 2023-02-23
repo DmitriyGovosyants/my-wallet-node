@@ -14,14 +14,8 @@ const registerController = async (req, res) => {
   const token = await registration(req.body);
   res.status(201).json({
     code: 201,
-    status: 'success',
-    data: {
-      token: token,
-      email: req.body.email,
-      name: req.body.name
-    },
-
     message: 'Registration success',
+    token: token,
   });
 };
 
@@ -50,12 +44,9 @@ const loginController = async (req, res, next) => {
     });
     return;
   }
-  res.json({
+  res.status(200).json({
     code: 200,
-    data: {
-      token: result.token,
-      email: result.email,
-    },
+    token: result.token,
   });
 };
 
@@ -77,10 +68,6 @@ const currentController = async (req, res) => {
   }
   res.json({
     code: 200,
-    data: {
-      email: req.user.email,
-      name: req.user.name,
-    },
     message: 'User confirmed',
   });
 };

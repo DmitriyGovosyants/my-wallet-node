@@ -31,11 +31,11 @@ const findUserByEmail = async email => {
 //   );
 // };
 
-// const addUserAvatar = async (avatarURL, user) => {
+// const addUserAvatar = async (avatar: avatarUrl, user) => {
 //   const avatar = await User.findByIdAndUpdate(
 //     { _id: user._id },
 //     {
-//       avatarURL: avatarURL,
+//       avatar: avatarUrl,
 //     },
 //     { new: true }
 //   );

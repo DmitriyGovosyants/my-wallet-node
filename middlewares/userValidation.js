@@ -34,7 +34,7 @@ const userSchema = Joi.object({
       'string.pattern.base':
         'Password length should have at 7 to 32 symbol and does not contain a space',
     }),
-  avatarURL: Joi.string(),
+  avatar: Joi.string(),
 });
 
 // Мидлвар для обработки ошибок валидации body

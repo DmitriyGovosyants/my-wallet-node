@@ -8,7 +8,19 @@ const { SECRET_KEY } = process.env; // секрет для подписи ток
 
 // Регистрация юзера
 const registration = async body => {
-  const user = await User.create({ ...body });
+  const user = await User.create({
+    ...body,
+    settings: {
+      mainCurrency: null,
+      bills: [],
+      categories: [],
+      filter: {
+        bill: 'all bills',
+        type: 'expenses',
+        date: 'month',
+      },
+    }
+  });
   const payload = {
     id: user.id,
     email: user.email,

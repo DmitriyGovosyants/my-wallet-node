@@ -22,10 +22,38 @@ const userSchema = new Schema(
       type: String,
       default: null,
     },
-    avatarURL: {
+    avatar: {
       type: String,
       default: null,
     },
+    settings: {
+      mainCurrency: {
+        type: String,
+        default: null,
+      },
+      bills: [{
+        type: Schema.Types.ObjectId,
+        ref: 'bills',
+      }],
+      categories: {
+        type: Array,
+        default: [],
+      },
+      filter: {
+        bill: {
+          type: String,
+          default: 'all bills',
+        },
+        type: {
+          type: String,
+          default: 'expenses',
+        },
+        date: {
+          type: String,
+          default: 'month',
+        },
+      },
+    }
   },
   { versionKey: false, timestamps: false }
 );
