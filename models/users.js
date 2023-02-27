@@ -29,7 +29,7 @@ const userSchema = new Schema(
     settings: {
       mainCurrency: {
         type: String,
-        default: null,
+        default: '',
       },
       bills: [{
         type: Schema.Types.ObjectId,
@@ -42,7 +42,7 @@ const userSchema = new Schema(
       filter: {
         bill: {
           type: String,
-          default: 'all bills',
+          default: 'all',
         },
         type: {
           type: String,

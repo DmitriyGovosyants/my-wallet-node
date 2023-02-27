@@ -5,6 +5,7 @@ require('dotenv').config();
 
 const {
   authRouter,
+  userRouter,
 } = require('./routes');
 
 const { errorHandler } = require('./helpers/errorHandler');
@@ -20,6 +21,7 @@ app.use(express.static('public'));
 app.use(express.urlencoded({ extended: false }));
 
 app.use('/api/auth', authRouter);
+app.use('/api/user', userRouter);
 
 app.use((req, res) => {
   res.status(404).json({ message: 'Not found' });
