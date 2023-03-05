@@ -1,9 +1,5 @@
-// Мидлвар для валидации
 const Joi = require('joi');
-// const JoiDate = require('@joi/date');
-// const Joi = JoiImport.extend(JoiDate);
 
-// Схема валидации регистрации и логина юзера
 const userSchema = Joi.object({
   name: Joi.string()
     .regex(/^[^ 0-9][a-zA-Zа-яА-ЯёЁіІїЇєЄ\s]*$/)
@@ -36,19 +32,13 @@ const userSchema = Joi.object({
     })
     .required(),
   avatar: Joi.string(),
+  accounts: Joi.array(),
+  categories: Joi.array(),
   settings: Joi.object({
     mainCurrency: Joi.string().allow(''),
-    bills: Joi.array(),
-    categories: Joi.array(),
-    filter: Joi.object({
-      bill: Joi.string(),
-      type: Joi.string(),
-      date: Joi.string(),
-    })
   })
 });
 
-// Мидлвар для обработки ошибок валидации body
 const validate = (schema, res, req, next) => {
   const validationBody = schema.validate(req.body);
 

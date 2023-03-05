@@ -8,9 +8,24 @@ const router = express.Router();
 const { registerController, loginController, logoutController, currentController } =
   authController;
 
-router.post('/register', userValidation, ctrlWrapper(registerController)); //   Регистрация
-router.post('/login', ctrlWrapper(loginController)); // Вход
-router.get('/logout', authentificate, ctrlWrapper(logoutController)); // Выход
-router.get('/current', authentificate, ctrlWrapper(currentController)); // Текущий юзер
+router.post(
+  '/register',
+  userValidation,
+  ctrlWrapper(registerController)
+);
+router.post(
+  '/login',
+  ctrlWrapper(loginController)
+);
+router.get(
+  '/logout',
+  authentificate,
+  ctrlWrapper(logoutController)
+);
+router.get(
+  '/current',
+  authentificate,
+  ctrlWrapper(currentController)
+);
 
 module.exports = router;

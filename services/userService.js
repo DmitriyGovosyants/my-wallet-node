@@ -1,7 +1,6 @@
 const isValid = require('mongoose').Types.ObjectId.isValid;
 const { User } = require('../models');
 
-// Находит юзера в базе по id
 const findUserById = async id => {
   if (!isValid(id)) return false;
 
@@ -9,13 +8,11 @@ const findUserById = async id => {
   return user;
 };
 
-// Находит юзера в базе по email
 const findUserByEmail = async email => {
   const user = await User.findOne({ email });
   return user;
 };
 
-// Обновление информации юзера
 const updateUserInfo = async (userID, info) => {
   const { currency } = info;
   return await User.findByIdAndUpdate(
@@ -26,7 +23,7 @@ const updateUserInfo = async (userID, info) => {
         "settings.mainCurrency": currency
       }
     },
-    // { new: true }
+    { new: true }
   );
 };
 

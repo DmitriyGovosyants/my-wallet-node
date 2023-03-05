@@ -1,7 +1,5 @@
-const mongoose = require('mongoose');
+const { Schema, model } = require('mongoose');
 const bcrypt = require('bcryptjs');
-
-const { Schema } = mongoose;
 
 const userSchema = new Schema(
   {
@@ -26,44 +24,31 @@ const userSchema = new Schema(
       type: String,
       default: null,
     },
+    accounts: [{
+      type: Schema.Types.ObjectId,
+      ref: 'accounts',
+    }],
+    categories: [{
+      type: Schema.Types.ObjectId,
+      ref: 'categories',
+    }],
     settings: {
       mainCurrency: {
         type: String,
         default: '',
       },
-      bills: [{
-        type: Schema.Types.ObjectId,
-        ref: 'bills',
-      }],
-      categories: {
-        type: Array,
-        default: [],
-      },
-      filter: {
-        bill: {
-          type: String,
-          default: 'all',
-        },
-        type: {
-          type: String,
-          default: 'expenses',
-        },
-        date: {
-          type: String,
-          default: 'month',
-        },
-      },
+      
     }
   },
-  { versionKey: false, timestamps: false }
+  { versionKey: false, timestamps: true }
 );
 
-// Хук, хеширует и солит пароль перед сохранением в базу
+
 userSchema.pre('save', function (next) {
   this.password = bcrypt.hashSync(this.password, 10);
   next();
 });
 
-const User = mongoose.model('user', userSchema);
+const User = model('user', userSchema);
 
 module.exports = User;

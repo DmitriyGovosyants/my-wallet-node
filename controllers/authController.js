@@ -2,7 +2,6 @@ const { userService, authService } = require('../services');
 const { findUserByEmail } = userService;
 const { registration, login, logout } = authService;
 
-//  Регистрация юзера
 const registerController = async (req, res) => {
   const user = await findUserByEmail(req.body.email);
   if (user) {
@@ -19,7 +18,6 @@ const registerController = async (req, res) => {
   });
 };
 
-// Вход юзера
 const loginController = async (req, res, next) => {
   const { email, password } = req.body;
   if (!password || !email) {
@@ -47,20 +45,19 @@ const loginController = async (req, res, next) => {
   res.status(200).json({
     code: 200,
     token: result.token,
+    message: 'Success',
   });
 };
 
-// Выход юзера
 const logoutController = async (req, res) => {
   const { id, token } = req.user;
   await logout(id, token);
   res.json({
     code: 200,
-    message: 'Logout Success',
+    message: 'Success',
   });
 };
 
-// Проверка текущего юзера
 const currentController = async (req, res) => {
   const { token } = req.user;
   if (!token) {

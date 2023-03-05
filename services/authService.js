@@ -4,9 +4,8 @@ const isValid = require('mongoose').Types.ObjectId.isValid;
 
 const { User } = require('../models');
 
-const { SECRET_KEY } = process.env; // секрет для подписи токена
+const { SECRET_KEY } = process.env;
 
-// Регистрация юзера
 const registration = async body => {
   const user = await User.create({
     ...body
@@ -18,7 +17,6 @@ const registration = async body => {
   return await addToken(payload);
 };
 
-// Логин юзера
 const login = async (email, password) => {
   const user = await User.findOne({ email });
   if (!user) {
@@ -40,7 +38,6 @@ const login = async (email, password) => {
   return { token, email };
 };
 
-// Выход юзера
 const logout = async (id, token) => {
   return await User.findOneAndUpdate(
     { _id: id, token: token },
@@ -48,7 +45,6 @@ const logout = async (id, token) => {
   );
 };
 
-// Добавить токен
 const addToken = async payload => {
   const { id } = payload;
   if (!isValid(id)) return false;
