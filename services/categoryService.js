@@ -6,7 +6,7 @@ const getCategories = async (userID) => {
   const user = await User.findOne({ _id: userID }).populate({
     path: 'categories',
     options: {
-      sort: { createdAt: -1 }
+      sort: { createdAt: 1 }
     },
     select: '-createdAt -updatedAt',
   });
@@ -27,7 +27,7 @@ const addCategory = async (userID, category) => {
   }
 };
 
-const updateCategory= async (categoryID, body) => {
+const updateCategory = async (categoryID, body) => {
   return await Category.findByIdAndUpdate(
     { _id: categoryID },
     { ...body },

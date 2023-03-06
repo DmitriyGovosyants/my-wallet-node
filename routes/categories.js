@@ -20,13 +20,13 @@ router.post(
   ctrlWrapper(addCategoryController)
 );
 router.put(
-  '/:accountID',
+  '/:categoryID',
   authentificate,
   categoryValidation,
   ctrlWrapper(updateCategoryController)
 );
 router.delete(
-  '/:accountID',
+  '/:categoryID',
   authentificate,
   ctrlWrapper(deleteCategoryController)
 );
