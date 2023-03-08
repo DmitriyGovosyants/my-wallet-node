@@ -28,7 +28,6 @@ const addCategoryController = async (req, res) => {
 };
 
 const updateCategoryController = async (req, res) => {
-  console.log(req.params)
   const { categoryID } = req.params;
   const body = req.body;
   const result = await updateCategory(categoryID, body);

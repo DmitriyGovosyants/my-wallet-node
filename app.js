@@ -8,6 +8,7 @@ const {
   settingsRouter,
   accountsRouter,
   categoriesRouter,
+  transactionsRouter,
 } = require('./routes');
 
 const { errorHandler } = require('./helpers/errorHandler');
@@ -26,6 +27,7 @@ app.use('/api/auth', authRouter);
 app.use('/api/settings', settingsRouter);
 app.use('/api/accounts', accountsRouter);
 app.use('/api/categories', categoriesRouter);
+app.use('/api/transactions', transactionsRouter);
 
 app.use((req, res) => {
   res.status(404).json({ message: 'Not found' });
